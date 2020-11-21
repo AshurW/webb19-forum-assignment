@@ -13,12 +13,12 @@ function App() {
     <div className='container'>
       <Navbar />
       <Switch>
-        <Route path='/posts/:postId' component={PostDetailPage} />
-        <Route path='/posts/create' component={PostCreatePage} />
-        <Route path='/posts' component={PostListPage} />
-        <Route path='/register' component={RegisterPage} />
-        <Route path='/login' component={LoginPage} />
-        <Route path='/' component={HomePage} />
+        <Route path='/posts/create' component={PostCreatePage} exact />
+        <Route path='/posts/:postId' component={PostDetailPage} exact />
+        <Route path='/posts' component={PostListPage} exact/>
+        <Route path='/register' component={RegisterPage} exact/>
+        <Route path='/login' component={LoginPage} exact/>
+        <Route path='/' component={HomePage} exact/>
       </Switch>
     </div>
   );

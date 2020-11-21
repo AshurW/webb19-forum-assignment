@@ -14,7 +14,7 @@ export default function RegisterForm() {
             password: e.target.password.value,
             firstName: e.target.firstname.value,
             lastName: e.target.lastname.value,
-            country: e.target.country.value
+            country: e.target.countryList.value
         }
 
         const res = await registerUser(payload)
@@ -54,7 +54,7 @@ export default function RegisterForm() {
                 </div>
                 <div className="form-group">
                     <label htmlFor='countryList'>Country: </label>
-                    <select className='form-control' name='country'>
+                    <select className='form-control' name='countryList'>
                         {countryData && countryData.map(country => {
                             return (
                                 <option key={country.id} value={country.id}>{country.title}</option>

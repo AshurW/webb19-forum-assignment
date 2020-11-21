@@ -7,7 +7,7 @@ const HEADER_AUTH = {
     }
 }
 
-export async function getCountries () {
+export async function getCountries() {
     try {
         const res = await axios.get(`${ROOT_URL}/countries/`)
         const data = res.data.results
@@ -17,7 +17,7 @@ export async function getCountries () {
     }
 }
 
-export async function registerUser (payload) {
+export async function registerUser(payload) {
     try {
         const res = await axios.post(`${ROOT_URL}/auth/users/`, payload)
         return res
@@ -26,11 +26,11 @@ export async function registerUser (payload) {
     }
 }
 
-export async function authenticateUser (payload) {
+export async function authenticateUser(payload) {
     try {
         // console.log(payload)
         const res = await axios.post(`${ROOT_URL}/auth/api-token-auth/`, payload)
-        if(res.data.token) {
+        if (res.data.token) {
             localStorage.setItem('loginToken', res.data.token)
         }
         return res.status
@@ -39,11 +39,11 @@ export async function authenticateUser (payload) {
     }
 }
 
-export async function getCurrentUserInfo () {
+export async function getCurrentUserInfo() {
     try {
         const res = await axios.get(`${ROOT_URL}/me/`, HEADER_AUTH)
         return res.data
     } catch (error) {
-        
+
     }
 }
