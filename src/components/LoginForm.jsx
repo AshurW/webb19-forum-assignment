@@ -5,7 +5,6 @@ import { authenticateUser } from '../services/apiAuth';
 export default function LoginForm() {
     const history = useHistory()
 
-
     async function loginUser(e) {
         e.preventDefault()
         const payload = {

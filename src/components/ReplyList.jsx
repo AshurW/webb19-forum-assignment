@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
+import { ReplyContext } from '../context/MultiLevelContext';
 import { getReplies } from '../services/apiForum';
 
 export default function ReplyList() {
 
     const { postId } = useParams()
-    const [replyListData, setReplyListData] = useState(null)
+    const [replyListData, setReplyListData] = useContext(ReplyContext)
 
     useEffect(() => {
         async function fetchReplyList() {
             const data = await getReplies(postId)
             setReplyListData(data)
         }
-        fetchReplyList()
+        if(!replyListData) fetchReplyList()
     }, [])
 
     return (
@@ -20,7 +21,7 @@ export default function ReplyList() {
             <h3>Replies</h3>
             {replyListData && replyListData.map(reply => {
                 return (
-                    <div>
+                    <div key={reply.id}>
                         <p>Title: {reply.title}</p>
                         <p>Author: {reply.author && reply.author.firstName}</p>
                         <p>Content: {reply.content}</p>

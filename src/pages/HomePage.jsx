@@ -1,16 +1,17 @@
-import React, {useState, useEffect} from 'react'
+import React, {useContext, useEffect} from 'react'
+import { UserContext } from '../context/MultiLevelContext'
 import { getCurrentUserInfo } from '../services/apiAuth'
 
 export default function HomePage() {
 
-    const [currentUserData, setCurrentUserData] = useState(null)
+    const [currentUserData, setCurrentUserData] = useContext(UserContext)
 
     useEffect(() => {
         async function fetchCurrentUser () {
             const res = await getCurrentUserInfo()
             setCurrentUserData(res)
         }
-        fetchCurrentUser()
+        if(!currentUserData) fetchCurrentUser()
     }, [])
 
     return (
