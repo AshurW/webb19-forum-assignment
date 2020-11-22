@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
-import { getPosts } from '../services/apiForum'
-import { Link } from 'react-router-dom';
-import { PostsContext } from '../context/MultiLevelContext';
+import { getPosts } from '../../services/apiForum'
+import { PostsContext } from '../../context/MultiLevelContext';
+import PostCard from './PostCard';
 
 export default function PostList() {
 
@@ -13,15 +13,15 @@ export default function PostList() {
             setPostListData(data)
             console.log(data)
         }
-        if(!postListData) fetchPostList()
+        if (!postListData) fetchPostList()
     }, [])
 
     return (
         <div className='mt-3'>
             {postListData && postListData.map(postData => {
                 return (
-                    <p key={postData.id}><Link to={`/posts/${postData.id}`} >{postData.title}</Link></p>
-                )
+                    <PostCard key={postData.id} postData={postData} />
+                )       
             })}
         </div>
     )

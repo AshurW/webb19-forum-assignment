@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import { PostDetailContext } from '../context/MultiLevelContext';
-import { getPost } from '../services/apiForum';
+import { PostDetailContext } from '../../context/MultiLevelContext';
+import { getPost } from '../../services/apiForum';
 
 export default function Post() {
 

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import { ReplyContext } from '../context/MultiLevelContext';
-import { getReplies } from '../services/apiForum';
+import { ReplyContext } from '../../context/MultiLevelContext';
+import { getReplies } from '../../services/apiForum';
 
 export default function ReplyList() {
 

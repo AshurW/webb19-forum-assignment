@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { createPost, getCategories } from '../services/apiForum'
+import { createPost, getCategories } from '../../services/apiForum'
 import { useHistory } from 'react-router-dom';
 
 export default function PostForm() {
