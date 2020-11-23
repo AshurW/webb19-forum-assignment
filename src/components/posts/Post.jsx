@@ -13,7 +13,9 @@ export default function Post() {
             const data = await getPost(postId)
             setPostDetailData(data)
         }
-        if(!postDetailData) fetchPostDetail()
+        if(!postDetailData || !postDetailData.id !== postId) {
+            fetchPostDetail()
+        }
     }, [])
 
     return (

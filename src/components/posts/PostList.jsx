@@ -11,7 +11,6 @@ export default function PostList() {
         async function fetchPostList() {
             const data = await getPosts()
             setPostListData(data)
-            console.log(data)
         }
         if (!postListData) fetchPostList()
     }, [])

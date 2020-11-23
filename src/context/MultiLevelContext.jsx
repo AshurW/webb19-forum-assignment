@@ -6,10 +6,10 @@ export const PostDetailContext = createContext()
 export const ReplyContext = createContext()
 
 export function MultiLevelProvider(props) {
-    const [currentUserData, setCurrentUserData] = useState()
-    const [postListData, setPostListData] = useState()
-    const [postDetailData, setPostDetailData] = useState()
-    const [replyListData, setReplyListData] = useState()
+    const [currentUserData, setCurrentUserData] = useState(null)
+    const [postListData, setPostListData] = useState(null)
+    const [postDetailData, setPostDetailData] = useState(null)
+    const [replyListData, setReplyListData] = useState(null)
 
     return (
         <UserContext.Provider value={[currentUserData, setCurrentUserData]}>

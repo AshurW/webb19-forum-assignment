@@ -11,7 +11,9 @@ export default function HomePage() {
             const res = await getCurrentUserInfo()
             setCurrentUserData(res)
         }
-        if(!currentUserData) fetchCurrentUser()
+        if(!currentUserData && localStorage.getItem('loginToken')) {
+            fetchCurrentUser()
+        } 
     }, [])
 
     return (

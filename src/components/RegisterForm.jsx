@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 import { getCountries, registerUser } from '../services/apiAuth';
+import ErrorMessage from './ErrorMessage';
 
 export default function RegisterForm() {
     const history = useHistory()
 
     const [countryData, setCountryData] = useState(null)
+    const [message, setMessage] = useState(null)
 
     async function registerNewUser (e) {
         e.preventDefault()
@@ -21,7 +23,8 @@ export default function RegisterForm() {
         if (res && res.status === 201) {
             history.push('/login')
         } else {
-            console.log('something is wrong')
+            // console.log(Object.values(res.data))
+            setMessage(Object.values(res.data))
         } 
     }
 
@@ -35,6 +38,10 @@ export default function RegisterForm() {
 
     return (
         <div>
+            {message && (
+                    <ErrorMessage message={message} />
+                )
+            }
             <form onSubmit={registerNewUser}>
                 <div className="form-group">
                     <label htmlFor='email'>Email: </label>

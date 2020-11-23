@@ -52,3 +52,13 @@ export async function getReplies(id) {
     }
 }
 
+export async function createReply(data) {
+    try {
+        const res = await axios.post(`${ROOT_URL}/posts/`, data, HEADER_AUTH)
+        console.log(res)
+        return res.status
+    } catch (error) {
+        
+    }
+}
+

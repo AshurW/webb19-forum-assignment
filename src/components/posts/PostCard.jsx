@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { PostCardDiv } from './PostCardStyle';
+import { PostCardDiv } from './CardStyles';
 
 export default function PostCard({postData}) {
 

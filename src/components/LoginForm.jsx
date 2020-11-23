@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom';
 import { authenticateUser } from '../services/apiAuth';
+import ErrorMessage from './ErrorMessage';
 
 export default function LoginForm() {
     const history = useHistory()
+
+    const [message, setMessage] = useState(null)
 
     async function loginUser(e) {
         e.preventDefault()
@@ -12,23 +15,27 @@ export default function LoginForm() {
             password: e.target.password.value
         }
         const res = await authenticateUser(payload)
-        if(res && res === 200) {
+        if (res && res === 200) {
             history.push('/')
         } else {
-            console.log('something worng')
+            setMessage(Object.values(res.data))
         }
     }
 
     return (
         <div>
+            {message && (
+                    <ErrorMessage message={message} />
+                )
+            }
             <form onSubmit={loginUser}>
                 <div className="form-group">
                     <label htmlFor='email'>Email: </label>
-                    <input className='form-control' type="email" name="email" required/>
+                    <input className='form-control' type="email" name="email" required />
                 </div>
                 <div className="form-group">
                     <label htmlFor='password'>Password: </label>
-                    <input className='form-control' type="password" name="password" required/>
+                    <input className='form-control' type="password" name="password" required />
                 </div>
                 <button className="btn btn-primary" type='submit'>Login</button>
             </form>

@@ -8,6 +8,7 @@ import PostCreatePage from './pages/PostCreatePage';
 import PostDetailPage from './pages/PostDetailPage';
 import Navbar from './components/header/Navbar';
 import { MultiLevelProvider } from './context/MultiLevelContext';
+import ReplyCreatePage from './pages/ReplyCreatePage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Switch>
             <Route path='/posts/create' component={PostCreatePage} exact />
             <Route path='/posts/:postId' component={PostDetailPage} exact />
+            <Route path='/posts/:postId/reply' component={ReplyCreatePage} exact />
             <Route path='/posts' component={PostListPage} exact/>
             <Route path='/register' component={RegisterPage} exact/>
             <Route path='/login' component={LoginPage} exact/>
