@@ -33,7 +33,7 @@ export default function Navbar() {
                 </StyledLi>
                 {currentUserData &&
                     <StyledLi>
-                        <Link to='/posts'>Forum</Link>
+                        <Link to='/posts'>Posts</Link>
                     </StyledLi>
                 }
             </StyledUl>

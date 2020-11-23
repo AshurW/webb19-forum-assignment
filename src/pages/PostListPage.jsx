@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function PostListPage() {
     return (
         <div>
-            <h1>Forum</h1>
+            <h1>Posts</h1>
             <Link to='/posts/create'><button className="btn btn-primary">Create Post</button></Link>
             <PostList />
         </div>
