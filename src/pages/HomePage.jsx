@@ -19,6 +19,7 @@ export default function HomePage() {
     return (
         <div>
             <h1>Welcome {currentUserData && currentUserData.firstName}</h1>
+            <p>To the greates forum you will ever need</p>
         </div>
     )
 }
