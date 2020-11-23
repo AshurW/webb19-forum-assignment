@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { PostDetailContext } from '../../context/MultiLevelContext';
 import { getPost } from '../../services/apiForum';
+import { PostDiv } from './CardStyles';
+
 
 export default function Post() {
 
@@ -19,13 +21,13 @@ export default function Post() {
     }, [])
 
     return (
-        <div>
+        <PostDiv>
             {postDetailData && (
                 <>
                     <h1>{postDetailData.title}</h1>
                     <p>{postDetailData.content}</p>
                 </>
             )}
-        </div>
+        </PostDiv>
     )
 }

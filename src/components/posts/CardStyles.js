@@ -20,12 +20,16 @@ export const CardDiv = styled.div`
     }
 `
 
+export const PostDiv = styled(CardDiv)`
+    flex-direction: column;
+`
+
 export const PostCardDiv = styled(CardDiv)`
     background-color: ${props => (props.pinned ? '#444959' : '#282b34')};
 `
 
 export const ReplyCardDiv = styled(CardDiv)`
-    justify-content: center;
+    /* justify-content: center; */
     flex-direction: column;
     h5 {
         text-decoration: underline;

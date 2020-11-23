@@ -13,7 +13,7 @@ export default function ReplyList() {
     useEffect(() => {
         async function fetchReplyList() {
             const data = await getReplies(postId)
-            setReplyListData(data)
+            setReplyListData(data.reverse())
         }
         if(!replyListData || postDetailData !== postId) {
             fetchReplyList()
