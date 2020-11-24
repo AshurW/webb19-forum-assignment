@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { createPost, getCategories } from '../../services/apiForum'
 import { useHistory } from 'react-router-dom';
+import { RefreshContent } from '../../context/MultiLevelContext';
 
 export default function PostForm() {
     const history = useHistory()
     const [categoryData, setCategoryData] = useState(null)
+    const { setRefreshState } = useContext(RefreshContent)
 
     async function createNewPost(e) {
         e.preventDefault()
@@ -15,6 +17,7 @@ export default function PostForm() {
         }
         const res = await createPost(payload)
         if (res === 201) {
+            setRefreshState(true)
             history.push('/posts')
         }
     }

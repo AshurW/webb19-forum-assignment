@@ -15,7 +15,7 @@ export default function ReplyList() {
             const data = await getReplies(postId)
             setReplyListData(data.reverse())
         }
-        if(!replyListData || postDetailData !== postId) {
+        if (!replyListData || postDetailData !== postId) {
             fetchReplyList()
         }
     }, [])
@@ -25,9 +25,9 @@ export default function ReplyList() {
             <h3>Replies</h3>
             {(postDetailData && !postDetailData.isClosed) ? (
                 <Link to={`/posts/${postId}/reply`}><button className="btn btn-primary">Add Reply</button></Link>
-            ): (
-                <p>Replies for this post is closed</p>
-            )}
+            ) : (
+                    <p>Replies for this post is closed</p>
+                )}
             {replyListData && replyListData.map(reply => {
                 return (
                     <ReplyCard key={reply.id} reply={reply} />

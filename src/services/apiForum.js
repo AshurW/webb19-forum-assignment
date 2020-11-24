@@ -21,7 +21,11 @@ export async function getCategories() {
 export async function getPosts() {
     try {
         const res = await axios.get(`${ROOT_URL}/posts/`, HEADER_AUTH())
-        return res.data.results
+        if(res.data.next) {
+            return {data: res.data.results, nextLink: res.data.next}
+        } else {
+            return  {data: res.data.results, nextLink: null}
+        }
     } catch (error) {
 
     }
@@ -45,6 +49,19 @@ export async function getPost(id) {
     }
 }
 
+export async function getNextPagePost(link) {
+    try {
+        const res = await axios.get(link, HEADER_AUTH())
+        if(res.data.next) {
+            return {data: res.data.results, nextLink: res.data.next}
+        } else {
+            return  {data: res.data.results, nextLink: null}
+        }
+    } catch (error) {
+        
+    }
+}
+
 export async function getReplies(id) {
     try {
         const res = await axios.get(`${ROOT_URL}/posts/${id}/replies`, HEADER_AUTH())
@@ -57,7 +74,6 @@ export async function getReplies(id) {
 export async function createReply(data) {
     try {
         const res = await axios.post(`${ROOT_URL}/posts/`, data, HEADER_AUTH())
-        console.log(res)
         return res.status
     } catch (error) {
         

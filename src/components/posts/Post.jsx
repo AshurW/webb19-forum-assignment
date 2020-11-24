@@ -10,6 +10,10 @@ export default function Post() {
     const { postId } = useParams()
     const [postDetailData, setPostDetailData] = useContext(PostDetailContext)
 
+    function dateFormating(date) {
+        return (new Date(Date.parse(date))).toString()
+    }
+
     useEffect(() => {
         async function fetchPostDetail() {
             const data = await getPost(postId)
@@ -25,7 +29,7 @@ export default function Post() {
         <PostDiv>
             {postDetailData && (
                 <>
-                    <p>Created At: {postDetailData.createdAt}</p>
+                    <p>Created At: {dateFormating(postDetailData.createdAt)}</p>
 
                     <ContentCardDiv>
 
