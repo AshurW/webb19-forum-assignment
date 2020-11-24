@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { PostDetailContext } from '../../context/MultiLevelContext';
 import { getPost } from '../../services/apiForum';
-import { PostDiv } from './CardStyles';
+import { ContentCardDiv, PostDiv, } from './CardStyles';
 
 
 export default function Post() {
@@ -11,11 +11,12 @@ export default function Post() {
     const [postDetailData, setPostDetailData] = useContext(PostDetailContext)
 
     useEffect(() => {
-        async function fetchPostDetail () {
+        async function fetchPostDetail() {
             const data = await getPost(postId)
             setPostDetailData(data)
         }
-        if(!postDetailData || !postDetailData.id !== postId) {
+        if (!postDetailData || !postDetailData.id !== postId) {
+            setPostDetailData(null)
             fetchPostDetail()
         }
     }, [])
@@ -24,8 +25,14 @@ export default function Post() {
         <PostDiv>
             {postDetailData && (
                 <>
-                    <h1>{postDetailData.title}</h1>
-                    <p>{postDetailData.content}</p>
+                    <p>Created At: {postDetailData.createdAt}</p>
+
+                    <ContentCardDiv>
+
+                        <h1>{postDetailData.title}</h1>
+                        <p>{postDetailData.content}</p>
+                    </ContentCardDiv>
+                    <p>views: {postDetailData.viewCount}</p>
                 </>
             )}
         </PostDiv>

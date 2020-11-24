@@ -18,9 +18,8 @@ export default function LoginForm() {
         }
         const res = await authenticateUser(payload)
         if (res && res === 200) {
-            const res2 = await getCurrentUserInfo()
-            console.log(res2)
-            setCurrentUserData(res)
+            const userData = await getCurrentUserInfo()
+            setCurrentUserData(userData)
             history.push('/')
         } else {
             setMessage(Object.values(res.data))

@@ -29,9 +29,16 @@ export const PostCardDiv = styled(CardDiv)`
 `
 
 export const ReplyCardDiv = styled(CardDiv)`
-    /* justify-content: center; */
     flex-direction: column;
     h5 {
         text-decoration: underline;
     }
+`
+
+export const ContentCardDiv = styled(CardDiv)`
+    flex-direction: column;
+    h1 {
+        text-decoration: underline;
+    }
+
 `
