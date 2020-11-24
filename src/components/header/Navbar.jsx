@@ -7,7 +7,7 @@ import { getCurrentUserInfo } from '../../services/apiAuth'
 export default function Navbar() {
 
     const history = useHistory()
-    const [currentUserData, setCurrentUserData] = useContext(UserContext)
+    const {currentUserData, setCurrentUserData} = useContext(UserContext)
 
     function logoutUser() {
         setCurrentUserData(null)

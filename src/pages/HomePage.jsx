@@ -4,14 +4,14 @@ import { getCurrentUserInfo } from '../services/apiAuth'
 
 export default function HomePage() {
 
-    const [currentUserData, setCurrentUserData] = useContext(UserContext)
+    const {currentUserData, setCurrentUserData} = useContext(UserContext)
 
     useEffect(() => {
         async function fetchCurrentUser () {
             const res = await getCurrentUserInfo()
             setCurrentUserData(res)
         }
-        if(!currentUserData && localStorage.getItem('loginToken')) {
+        if(localStorage.getItem('loginToken')) {
             fetchCurrentUser()
         } 
     }, [])

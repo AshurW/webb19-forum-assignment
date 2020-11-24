@@ -1,11 +1,13 @@
 import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom';
-import { authenticateUser } from '../services/apiAuth';
+import { UserContext } from '../context/MultiLevelContext';
+import { authenticateUser, getCurrentUserInfo } from '../services/apiAuth';
 import ErrorMessage from './ErrorMessage';
 
 export default function LoginForm() {
     const history = useHistory()
 
+    const {setCurrentUserData} = useContext(UserContext)
     const [message, setMessage] = useState(null)
 
     async function loginUser(e) {
@@ -16,6 +18,9 @@ export default function LoginForm() {
         }
         const res = await authenticateUser(payload)
         if (res && res === 200) {
+            const res2 = await getCurrentUserInfo()
+            console.log(res2)
+            setCurrentUserData(res)
             history.push('/')
         } else {
             setMessage(Object.values(res.data))

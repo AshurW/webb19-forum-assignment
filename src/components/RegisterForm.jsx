@@ -23,7 +23,6 @@ export default function RegisterForm() {
         if (res && res.status === 201) {
             history.push('/login')
         } else {
-            // console.log(Object.values(res.data))
             setMessage(Object.values(res.data))
         } 
     }
